@@ -6,7 +6,7 @@ export const getUser = () => async (dispatch) => {
       type: "GET_USER_REQUEST",
     });
 
-    const { data } = await axios.get("/api/v1/user");
+    const { data } = await axios.get("http://localhost:5000/api/v1/user");
 
     dispatch({
       type: "GET_USER_SUCCESS",
@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
       type: "LOGIN_REQUEST",
     });
 
-    const { data } = await axios.post("/api/v1/login", {
+    const { data } = await axios.post("http://localhost:5000/api/v1/login", {
       email,
       password,
     });
@@ -46,7 +46,7 @@ export const login = (email, password) => async (dispatch) => {
         payload: errorMessage,
       });
     }
-  
+
   }
 };
 
@@ -56,7 +56,7 @@ export const logout = () => async (dispatch) => {
       type: "LOGOUT_REQUEST",
     });
 
-    const { data } = await axios.get("/api/v1/logout");
+    const { data } = await axios.get("http://localhost:5000/api/v1/logout");
 
     dispatch({
       type: "LOGOUT_SUCCESS",
@@ -76,7 +76,7 @@ export const loadUser = () => async (dispatch) => {
       type: "LOAD_USER_REQUEST",
     });
 
-    const { data } = await axios.get("/api/v1/me");
+    const { data } = await axios.get("http://localhost:5000/api/v1/me");
 
     dispatch({
       type: "LOAD_USER_SUCCESS",
@@ -97,7 +97,7 @@ export const updateUser =
         type: "UPDATE_USER_REQUEST",
       });
 
-      const { data } = await axios.put("/api/v1/admin/update",
+      const { data } = await axios.put("http://localhost:5000/api/v1/admin/update",
         {
           name,
           email,
@@ -130,7 +130,7 @@ export const addTimeline = (title, description, date) => async (dispatch) => {
       type: "ADD_TIMELINE_REQUEST",
     });
 
-    const { data } = await axios.post("/api/v1/admin/timeline/add",
+    const { data } = await axios.post("http://localhost:5000/api/v1/admin/timeline/add",
       {
         title,
         description,
@@ -181,7 +181,7 @@ export const addYoutube = (title, url, image) => async (dispatch) => {
       type: "ADD_YOUTUBE_REQUEST",
     });
 
-    const { data } = await axios.post("/api/v1/admin/youtube/add",
+    const { data } = await axios.post("http://localhost:5000/api/v1/admin/youtube/add",
       { title, url, image },
       {
         headers: {
@@ -223,30 +223,31 @@ export const deleteYoutube = (id) => async (dispatch) => {
 };
 
 export const addProject = (title, url, image, description, techStack) => async (dispatch) => {
-    try {
-      dispatch({
-        type: "ADD_PROJECT_REQUEST",
-      });
+  try {
+    dispatch({
+      type: "ADD_PROJECT_REQUEST",
+    });
 
-      const { data } = await axios.post("/api/v1/admin/project/add",
-        { title, url, image, description, techStack },
-        {
-          headers: {"Content-Type": "application/json",
-          },
-        }
-      );
+    const { data } = await axios.post("http://localhost:5000/api/v1/admin/project/add",
+      { title, url, image, description, techStack },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-      dispatch({
-        type: "ADD_PROJECT_SUCCESS",
-        payload: data.message,
-      });
-    } catch (error) {
-      dispatch({
-        type: "ADD_PROJECT_FAILURE",
-        payload: error.response.data.message,
-      });
-    }
-  };
+    dispatch({
+      type: "ADD_PROJECT_SUCCESS",
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: "ADD_PROJECT_FAILURE",
+      payload: error.response.data.message,
+    });
+  }
+};
 
 export const deleteProject = (id) => async (dispatch) => {
   try {
@@ -274,7 +275,7 @@ export const contactUs = (name, email, message) => async (dispatch) => {
       type: "CONTACT_US_REQUEST",
     });
 
-    const { data } = await axios.post("/api/v1/contact",
+    const { data } = await axios.post("http://localhost:5000/api/v1/contact",
       { name, email, message },
       {
         headers: {
