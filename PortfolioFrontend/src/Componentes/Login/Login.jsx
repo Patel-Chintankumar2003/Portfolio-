@@ -1,42 +1,50 @@
 import { Button, Typography } from "@mui/material";
-// useEffect,
-import React, {  useState } from "react";
-// , useSelector 
-import { useDispatch} from "react-redux";
-
+// , useEffect 
+import React, { useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify"; // Import toast from react-toastify
+import "react-toastify/ReactToastify.css" // Import toast styles
+import { login } from "../../actions/user.js";
 import "./Login.css";
-// import { useAlert } from "react-alert";
-import { login } from "../../actions/user.js"
+
+
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  // const alert = useAlert();
-  // const { loading, message, error } = useSelector((state) => state.login);
+  // , message, error
+  const { loading } = useSelector((state) => state.login);
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    dispatch(login(email, password));
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(email, password))
+      .then(() => {
+        toast.success("Login successful!"); // Show success toast
+      })
+      .catch((error) => {
+        toast.error(`Login failed: ${error.message}`); // Show error toast
+      });
   };
+    // dispatch(login(email, password));
+  // };
 
   // useEffect(() => {
   //   if (error) {
-  //     alert.error(error);
+  //     toast.error(error); // Show error notification
   //     dispatch({ type: "CLEAR_ERRORS" });
   //   }
   //   if (message) {
-  //     alert.success(message);
+  //     toast.success(message); // Show success notification
   //     dispatch({ type: "CLEAR_MESSAGE" });
   //   }
-  // }, [alert, error, message, dispatch]);
+  // }, [error, message, dispatch]);
 
   return (
     <div className="login">
       <div className="loginContainer">
-        <form className="loginForm" 
-        onSubmit={submitHandler}
-        >
+        <form className="loginForm" onSubmit={submitHandler}>
           <Typography variant="h4">
             <p>A</p>
             <p>D</p>
@@ -66,8 +74,10 @@ const Login = () => {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" variant="contained" 
-            // disabled={loading}
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={loading} // Disable button if loading
             >
               Login
             </Button>

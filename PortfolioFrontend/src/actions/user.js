@@ -32,20 +32,26 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post("http://localhost:5000/api/v1/login", {
       email,
       password,
+    },{
+      headers: {
+
+        "Content-Type": "application/json",
+      }
     });
+    
 
     dispatch({
       type: "LOGIN_SUCCESS",
-      payload: data.login,
+      payload: data.message,    //login change to message
     });
   } catch (error) {
-    if (error.response) {
-      const errorMessage = error.response.data.message;
+    // if (error.response) {
+      // const errorMessage = error.response.data.message;
       dispatch({
         type: "LOGIN_FAILURE",
         payload: errorMessage,
       });
-    }
+    // }
 
   }
 };
@@ -85,26 +91,27 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "LOAD_USER_FAILURE",
-      payload: error.response.data.message,
+      payload:error.response.data.message, 
+              
     });
   }
 };
 
-export const updateUser =
-  (name, email, password, skills, about) => async (dispatch) => {
+
+export const updateUser =(name, email, password, skills, about) => async (dispatch) => {
     try {
       dispatch({
         type: "UPDATE_USER_REQUEST",
       });
 
       const { data } = await axios.put("http://localhost:5000/api/v1/admin/update",
-        {
+        JSON.stringify({
           name,
           email,
           password,
           skills,
           about,
-        },
+        }),
         {
           headers: {
             "Content-Type": "application/json",
@@ -161,7 +168,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
       type: "DELETE_TIMELINE_REQUEST",
     });
 
-    const { data } = await axios.delete(`/api/v1/admin/timeline/${id}`);
+    const { data } = await axios.delete(`http://localhost:5000/api/v1/admin/timeline/${id}`);
 
     dispatch({
       type: "DELETE_TIMELINE_SUCCESS",
@@ -208,7 +215,7 @@ export const deleteYoutube = (id) => async (dispatch) => {
       type: "DELETE_YOUTUBE_REQUEST",
     });
 
-    const { data } = await axios.delete(`/api/v1/admin/youtube/${id}`);
+    const { data } = await axios.delete(`http://localhost:5000/api/v1/admin/youtube/${id}`);
 
     dispatch({
       type: "DELETE_YOUTUBE_SUCCESS",
@@ -255,7 +262,7 @@ export const deleteProject = (id) => async (dispatch) => {
       type: "DELETE_PROJECT_REQUEST",
     });
 
-    const { data } = await axios.delete(`/api/v1/admin/project/${id}`);
+    const { data } = await axios.delete(`http://localhost:5000/api/v1/admin/project/${id}`);
 
     dispatch({
       type: "DELETE_PROJECT_SUCCESS",

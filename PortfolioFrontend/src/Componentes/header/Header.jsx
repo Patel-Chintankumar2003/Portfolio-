@@ -1,8 +1,7 @@
 import React from "react";
 import { ReactNavbar } from "overlay-navbar";
-import logo from "../../images/cp logo.png"
+import logo from "../../images/cp logo.png";
 import { FaUserAlt } from "react-icons/fa";
-
 
 const Header = () => {
   return (
@@ -10,7 +9,7 @@ const Header = () => {
       navColor1="white"
       navColor2="hsl(210 ,48%,8%)"
       burgerColor="hsl(250, 100%, 75%)"
-      burgerColorHover="hs1(250, 100%, 75%)"
+      burgerColorHover="hsl(250, 100%, 75%)"
       logo={logo}
       logoHoverColor="hsl(250, 100%, 75%)"
       nav2justifyContent="space-around"
@@ -28,16 +27,9 @@ const Header = () => {
       link1Size="1.5rem"
       link1Padding="3vmax"
       profileIcon={true}
-      ProfileIconElement={FaUserAlt}    //p is capital
+      ProfileIconElement={FaUserAlt} //p is capital
       profileIconColor="HSL(250, 100%, 75%)"
       profileIconColorHover="white"
-
-      // profileIcon={true}
-      // ProfileIconElement={FaUserAlt}
-      // profileIconColor="HSL(250, 100%, 75%)"
-      // profileIconColorHover="white"
-
-      
     />
   );
 };

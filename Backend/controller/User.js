@@ -1,5 +1,5 @@
 import { User } from "../model/User.js";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import { sendMail } from "../middlewares/sendMail.js";
 import cloudinary from "cloudinary";
 
@@ -18,8 +18,7 @@ export const login = async (req, res) => {
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
 
-    res
-      .status(200)
+    res.status(200)
       .cookie("token", token, {
         expires: new Date(Date.now() + 600000),
         httpOnly: true,
@@ -38,8 +37,7 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    res
-      .status(200)
+    res.status(200)
       .cookie("token", null, {
         expires: new Date(Date.now()),
         httpOnly: true,
@@ -127,7 +125,7 @@ export const updateUser = async (req, res) => {
 
     if (skills) {
       if (skills.image1) {
-        await cloudinary.v2.uploader.destroy(user.skills.image1.public_id);
+        // await cloudinary.v2.uploader.destroy(user.skills.image1.public_id);
         const myCloud = await cloudinary.v2.uploader.upload(skills.image1, {
           folder: "portfolio",
         });
@@ -139,7 +137,7 @@ export const updateUser = async (req, res) => {
       }
 
       if (skills.image2) {
-        await cloudinary.v2.uploader.destroy(user.skills.image2.public_id);
+        // await cloudinary.v2.uploader.destroy(user.skills.image2.public_id);
         const myCloud = await cloudinary.v2.uploader.upload(skills.image2, {
           folder: "portfolio",
         });
@@ -151,7 +149,7 @@ export const updateUser = async (req, res) => {
       }
 
       if (skills.image3) {
-        await cloudinary.v2.uploader.destroy(user.skills.image3.public_id);
+        // await cloudinary.v2.uploader.destroy(user.skills.image3.public_id);
         const myCloud = await cloudinary.v2.uploader.upload(skills.image3, {
           folder: "portfolio",
         });
@@ -163,7 +161,7 @@ export const updateUser = async (req, res) => {
       }
 
       if (skills.image4) {
-        await cloudinary.v2.uploader.destroy(user.skills.image4.public_id);
+        // await cloudinary.v2.uploader.destroy(user.skills.image4.public_id);
         const myCloud = await cloudinary.v2.uploader.upload(skills.image4, {
           folder: "portfolio",
         });
@@ -175,7 +173,7 @@ export const updateUser = async (req, res) => {
       }
 
       if (skills.image5) {
-        await cloudinary.v2.uploader.destroy(user.skills.image5.public_id);
+        // await cloudinary.v2.uploader.destroy(user.skills.image5.public_id);
         const myCloud = await cloudinary.v2.uploader.upload(skills.image5, {
           folder: "portfolio",
         });
@@ -187,7 +185,7 @@ export const updateUser = async (req, res) => {
       }
 
       if (skills.image6) {
-        await cloudinary.v2.uploader.destroy(user.skills.image6.public_id);
+        // await cloudinary.v2.uploader.destroy(user.skills.image6.public_id);
         const myCloud = await cloudinary.v2.uploader.upload(skills.image6, {
           folder: "portfolio",
         });
@@ -218,7 +216,7 @@ export const updateUser = async (req, res) => {
       }
 
       if (about.avatar) {
-        await cloudinary.v2.uploader.destroy(user.about.avatar.public_id);
+        // await cloudinary.v2.uploader.destroy(user.about.avatar.public_id);
 
         const myCloud = await cloudinary.v2.uploader.upload(about.avatar, {
           folder: "portfolio",

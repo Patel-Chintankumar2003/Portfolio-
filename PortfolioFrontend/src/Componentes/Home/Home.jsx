@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./Home.css";
 import * as THREE from "three";
 import moonImage from "../../Images/moon.jpg";
@@ -18,8 +18,10 @@ import {
   SiThreedotjs,
 } from "react-icons/si";
 import YoutubeCard from "../YoutubeCard/YoutubeCard";
+import { Link } from "react-router-dom";
+import { MouseOutlined } from "@mui/icons-material";
 
-const Home = () => {
+const Home = ({ timelines, youtubes, skills }) => {
   useEffect(() => {
     const textureLoader = new THREE.TextureLoader();
 
@@ -104,14 +106,13 @@ const Home = () => {
     return window.addEventListener("scroll", () => {
       camera.rotation.z = window.scrollY * 0.001;
       camera.rotation.y = window.scrollY * 0.003;
+      const skillsBox = document.getElementById("homeskillsBox")
 
-      const skillsBox = document.getElementById("homeskillsBox");
-
-      if (window.scrollY > 1500) {
-        skillsBox.style.animationName = "homeskillsBoxAnimationOn";
-      } else {
-        skillsBox.style.animationName = "homeskillsBoxAnimationOff";
-      }
+      // if (window.scrollY > 1500) {
+      //   skillsBox.style.animationName = "homeskillsBoxAnimationOn";
+      // } else {
+      //   skillsBox.style.animationName = "homeskillsBoxAnimationOff";
+      // }
     });
   }, []);
 
@@ -119,60 +120,75 @@ const Home = () => {
     <div className="home">
       <canvas className="homeCanvas"></canvas>
 
+      <div className="homeCanvasContainer">
+        <Typography variant="h1">
+          <p>W</p>
+          <p>E</p>
+          <p>L</p>
+          <p>C</p>
+          <p>O</p>
+          <p>M</p>
+          <p>E</p>
+        </Typography>
+
+        <div className="homeCanvasBox">
+          <Typography variant="h2">WEB</Typography>
+          <Typography variant="h2">DEVELOPER</Typography>
+          {/* <Typography variant="h2">TEACHER</Typography> */}
+          <Typography variant="h2">CHINTAN PATEL</Typography>
+        </div>
+
+        <Link to="/projects">VIEW WORK</Link>
+      </div>
+
+      <div className="homeScrollBtn">
+        <MouseOutlined />
+      </div>
+
       <div className="homeContainer">
         <Typography variant="h3">TIMELINE</Typography>
-        <TimeLine timelines={[1, 2, 3, 4]} />
+        <TimeLine timelines={timelines} />
       </div>
+
       <div className="homeSkills">
         <Typography variant="h3">SKILLS</Typography>
 
         <div className="homeCubeSkills">
-          <div className="homeCubeSkillsFaces homeCubeSkillsFace1 ">
-            <img
-              src="https://1.bp.blogspot.com/-epdCr-KFzhM/YGRaLEXsgHI/AAAAAAAAdAE/kJZq7IQgKUc4tkbOrjNLN7ZvAL3kZfNPwCLcBGAsYHQ/s776/Meena%2BRashi%2BMantra%2BFor%2BMarriage.jpg"
-              alt="face1"
-            />
-          </div>
-
-          <div className="homeCubeSkillsFaces homeCubeSkillsFace2">
-            <img
-              src="https://www.lawyersnjurists.com/wp-content/uploads/2019/03/Look_Out_For_The_Different_Types_Of_Hindu_Marriages_Defined_In_Chronicles.jpg"
-              alt="face2"
-            />
-          </div>
-
-          <div className="homeCubeSkillsFaces homeCubeSkillsFace3">
-            <img
-              src="https://videogiri.com/wp-content/uploads/2022/10/Hindu-Marriage-Biodata-Template-1.jpg"
-              alt="face3"
-            />
-          </div>
-
-          <div className="homeCubeSkillsFaces homeCubeSkillsFace4">
-            <img
-              src="https://i.pinimg.com/originals/1f/cd/34/1fcd347ddb6adb64006f5dd58335b5ee.jpg"
-              alt="face4"
-            />
-          </div>
-
-          <div className="homeCubeSkillsFaces homeCubeSkillsFace5">
-            <img
-              src="https://tse2.mm.bing.net/th?id=OIP.lgzIjEz3_X_WSG0BvolJ8QHaEj&pid=Api&P=0&h=220"
-              alt="face5"
-            />
-          </div>
-
-          <div className="homeCubeSkillsFaces homeCubeSkillsFace6">
-            <img
-              src="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-              alt="face6"
-            />
-          </div>
+          {skills && skills.image1 && (
+            <div className="homeCubeSkillsFaces homeCubeSkillsFace1">
+              <img src={skills.image1.url} alt="Face1" />
+            </div>
+          )}
+          {skills && skills.image2 && (
+            <div className="homeCubeSkillsFaces homeCubeSkillsFace2">
+              <img src={skills.image2.url} alt="Face2" />
+            </div>
+          )}
+          {skills && skills.image3 && (
+            <div className="homeCubeSkillsFaces homeCubeSkillsFace3">
+              <img src={skills.image3.url} alt="Face3" />
+            </div>
+          )}
+          {skills && skills.image4 && (
+            <div className="homeCubeSkillsFaces homeCubeSkillsFace4">
+              <img src={skills.image4.url} alt="Face4" />
+            </div>
+          )}
+          {skills && skills.image5 && (
+            <div className="homeCubeSkillsFaces homeCubeSkillsFace5">
+              <img src={skills.image5.url} alt="Face5" />
+            </div>
+          )}
+          {skills && skills.image6 && (
+            <div className="homeCubeSkillsFaces homeCubeSkillsFace6">
+              <img src={skills.image6.url} alt="Face6" />
+            </div>
+          )}
         </div>
 
         <div className="cubeShadow"></div>
 
-        <div className="homeskillsBox">
+        <div className="homeskillsBox" id="homeskillsBox">
           <SiAndroid />
           <SiHtml5 />
           <SiCss3 />
@@ -185,28 +201,40 @@ const Home = () => {
         </div>
       </div>
       <div className="homeYoutube">
-        <Typography variant="h3">YOUTUBE VIDEOS</Typography>
+        <Typography variant="h3"> YOUTUBE VIDEOS</Typography>
+
         <div className="homeYoutubeWrapper">
-          <YoutubeCard 
-          image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-          title="sample one"
-          />
-          <YoutubeCard 
-          image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-          title="sample one"
-          />
-          <YoutubeCard 
-          image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-          title="sample one"
-          />
-          <YoutubeCard 
-          image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-          title="sample one"
-          />
-          
+          {youtubes.map((item) => (
+            <YoutubeCard
+              image={item.image.url}
+              title={item.title}
+              url={item.url}
+              id={item._id}
+              key={item._id}
+            />
+          ))}
+          {/* <Typography variant="h3">YOUTUBE VIDEOS</Typography>
+
+          <div className="homeYoutubeWrapper">
+            <YoutubeCard 
+            image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
+            title="sample one"
+            />
+            <YoutubeCard 
+            image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
+            title="sample one"
+            />
+            <YoutubeCard 
+            image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
+            title="sample one"
+            />
+            <YoutubeCard 
+            image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
+            title="sample one"
+            />
+            */}
         </div>
       </div>
-      
     </div>
   );
 };

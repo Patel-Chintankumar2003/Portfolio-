@@ -46,6 +46,7 @@ export const loginReducer = createReducer(
       .addCase('LOAD_USER_REQUEST', (state) => {
         state.loading = true;
         state.isAuthenticated = false;
+        state.error = null;
       })
       .addCase('LOAD_USER_SUCCESS', (state, action) => {
         state.loading = false;

@@ -4,7 +4,7 @@
   height: 100vh;
   max-width: 100%;
   /* filter: blur(10px); */
-  /* position: absolute; */
+  position: absolute;
 }
 
 .homeCanvasContainer {
