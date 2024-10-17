@@ -23,7 +23,7 @@ function App() {
 
   // Get states from Redux store
   const { isAuthenticated } = useSelector((state) => state.login);
-  const { loading, user } = useSelector((state) => state.user)
+  const {loading ,user} =useSelector((state) => state.user)
 
   // Fetch user data on component mount
   useEffect(() => {
@@ -39,13 +39,14 @@ function App() {
         <>
           <Header />
           <Routes>
+            {/* Dynamic Home route with data passed from user state */}
             <Route
               path="/"
               element={
                 <Home
-                  youtubes={user?.youtube}
-                  timelines={user?.timeline}
-                  skills={user?.skills}
+                  youtubes={user.youtube}
+                  timelines={user.timeline}
+                  skills={user.skills}
                 />
               }
             />
