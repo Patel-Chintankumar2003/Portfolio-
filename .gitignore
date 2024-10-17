@@ -1,25 +1,25 @@
 # dependencies
 
-/node_modules
-/backend/config/config.env
+/Backend/node_modules
+/Backend/config/config.env
 
 
-/frontend/node_modules
-/frontend/.pnp
-/frontend/.pnp.js
+/PortfolioFrontend/node_modules
+/PortfolioFrontend/.pnp
+/PortfolioFrontend/.pnp.js
 
 # testing
-/frontend/coverage
+/PortfolioFrontend/coverage
 
 # production
-/frontend/build
+/PortfolioFrontend/build
 
 # misc
-/frontend/.DS_Store
-/frontend/.env.local
-/frontend/.env.development.local
-/frontend/.env.test.local
-/frontend/.env.production.local  
+/PortfolioFrontend/.DS_Store
+/PortfolioFrontend/.env.local
+/PortfolioFrontend/.env.development.local
+/PortfolioFrontend/.env.test.local
+/PortfolioFrontend/.env.production.local  
 
 
 # Logs

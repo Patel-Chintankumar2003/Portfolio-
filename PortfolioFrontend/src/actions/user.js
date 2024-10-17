@@ -1,5 +1,5 @@
 import axios from "axios";
-
+axios.defaults.withCredentials = true;
 export const getUser = () => async (dispatch) => {
   try {
     dispatch({
@@ -44,11 +44,11 @@ export const login = (email, password) => async (dispatch) => {
     });
   } catch (error) {
     if (error.response) {
-    const errorMessage = error.response.data.message
-    dispatch({
-      type: "LOGIN_FAILURE",
-      payload: errorMessage,
-    });
+      const errorMessage = error.response.data.message
+      dispatch({
+        type: "LOGIN_FAILURE",
+        payload: errorMessage,
+      });
     }
   }
 };
@@ -80,8 +80,8 @@ export const loadUser = () => async (dispatch) => {
     });
     axios.defaults.withCredentials = true;
     const { data } = await axios.get("http://localhost:5000/api/v1/me");
-    
-    
+
+
     dispatch({
       type: "LOAD_USER_SUCCESS",
       payload: data.user,
@@ -95,33 +95,33 @@ export const loadUser = () => async (dispatch) => {
 };
 
 export const updateUser = (name, email, password, skills, about) => async (dispatch) => {
-    try {
-      dispatch({ type: "UPDATE_USER_REQUEST" });
+  try {
+    dispatch({ type: "UPDATE_USER_REQUEST" });
 
-      // Log payload to check the data being sent
-      console.log({ name, email, password, skills, about });
-   
-      const { data } = await axios.put("http://localhost:5000/api/v1/admin/update",
-        { name, email, password, skills, about },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true, // Important for cookies or authentication
-        }
-      );
+    // Log payload to check the data being sent
+    console.log({ name, email, password, skills, about });
 
-      dispatch({
-        type: "UPDATE_USER_SUCCESS",
-        payload: data.message,
-      });
-    } catch (error) {
-      dispatch({
-        type: "UPDATE_USER_FAILURE",
-        payload: error.response?.data?.message || "Unknown error",
-      });
-    }
-  };
+    const { data } = await axios.put("http://localhost:5000/api/v1/admin/update",
+      { name, email, password, skills, about },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true, // Important for cookies or authentication
+      }
+    );
+
+    dispatch({
+      type: "UPDATE_USER_SUCCESS",
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: "UPDATE_USER_FAILURE",
+      payload: error.response?.data?.message || "Unknown error",
+    });
+  }
+};
 
 export const addTimeline = (title, description, date) => async (dispatch) => {
   try {
