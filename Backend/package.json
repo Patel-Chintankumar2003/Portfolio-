@@ -1,4 +1,8 @@
 {
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -15,14 +19,12 @@
     "nodemailer": "^6.9.15",
     "nodemon": "^3.1.5"
   },
-  "name": "portfolio",
-  "version": "1.0.0",
-  "main": "backend/server.js",
-  "type": "module",
   "scripts": {
-    "dev": "nodemon backend/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "author": "",
+  "author": "chintan",
   "license": "ISC",
   "description": ""
 }
