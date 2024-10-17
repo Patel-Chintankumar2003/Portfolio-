@@ -6,7 +6,7 @@ export const getUser = () => async (dispatch) => {
       type: "GET_USER_REQUEST",
     });
 
-    const { data } = await axios.get("http://localhost:5000/api/v1/user");
+    const { data } = await axios.get(`${import.meta.env.VITE_API_BACKEND_URL}/api/v1/user`);
 
     dispatch({
       type: "GET_USER_SUCCESS",
@@ -26,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/v1/login",
+      `${import.meta.env.VITE_API_BACKEND_URL}/api/v1/login`,
       {
         email,
         password,
@@ -59,7 +59,7 @@ export const logout = () => async (dispatch) => {
       type: "LOGOUT_REQUEST",
     });
 
-    const { data } = await axios.get("http://localhost:5000/api/v1/logout");
+    const { data } = await axios.get(`${import.meta.env.VITE_API_BACKEND_URL}/api/v1/logout`);
 
     dispatch({
       type: "LOGOUT_SUCCESS",
@@ -79,7 +79,7 @@ export const loadUser = () => async (dispatch) => {
       type: "LOAD_USER_REQUEST",
     });
     axios.defaults.withCredentials = true;
-    const { data } = await axios.get("http://localhost:5000/api/v1/me");
+    const { data } = await axios.get(`${import.meta.env.VITE_API_BACKEND_URL}/api/v1/me`);
 
 
     dispatch({
@@ -101,7 +101,7 @@ export const updateUser = (name, email, password, skills, about) => async (dispa
     // Log payload to check the data being sent
     console.log({ name, email, password, skills, about });
 
-    const { data } = await axios.put("http://localhost:5000/api/v1/admin/update",
+    const { data } = await axios.put(`${import.meta.env.VITE_API_BACKEND_URL}/api/v1/admin/update`,
       { name, email, password, skills, about },
       {
         headers: {
@@ -129,7 +129,7 @@ export const addTimeline = (title, description, date) => async (dispatch) => {
       type: "ADD_TIMELINE_REQUEST",
     });
 
-    const { data } = await axios.post("http://localhost:5000/api/v1/admin/timeline/add",
+    const { data } = await axios.post(`${import.meta.env.VITE_API_BACKEND_URL}/api/v1/admin/timeline/add`,
       {
         title,
         description,
@@ -161,7 +161,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.delete(
-      `http://localhost:5000/api/v1/admin/timeline/${id}`
+      `${import.meta.env.VITE_API_BACKEND_URL}/api/v1/admin/timeline/${id}`
     );
 
     dispatch({
@@ -182,7 +182,7 @@ export const addYoutube = (title, url, image) => async (dispatch) => {
       type: "ADD_YOUTUBE_REQUEST",
     });
 
-    const { data } = await axios.post("http://localhost:5000/api/v1/admin/youtube/add/",
+    const { data } = await axios.post(`${import.meta.env.VITE_API_BACKEND_URL}/api/v1/admin/youtube/add/`,
       { title, url, image },
       {
         headers: {
@@ -210,7 +210,7 @@ export const deleteYoutube = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.delete(
-      `http://localhost:5000/api/v1/admin/youtube/${id}`
+      `${import.meta.env.VITE_API_BACKEND_URL}/api/v1/admin/youtube/${id}`
     );
 
     dispatch({
@@ -233,7 +233,7 @@ export const addProject =
       });
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/v1/admin/project/add",
+        `${import.meta.env.VITE_API_BACKEND_URL}/api/v1/admin/project/add`,
         { title, url, image, description, techStack },
         {
           headers: {
@@ -261,7 +261,7 @@ export const deleteProject = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.delete(
-      `http://localhost:5000/api/v1/admin/project/${id}`
+      `${import.meta.env.VITE_API_BACKEND_URL}/api/v1/admin/project/${id}`
     );
 
     dispatch({
@@ -283,7 +283,7 @@ export const contactUs = (name, email, message) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/v1/contact",
+      `${import.meta.env.VITE_API_BACKEND_URL}/api/v1/contact`,
       { name, email, message },
       {
         headers: {

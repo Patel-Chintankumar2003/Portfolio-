@@ -11,7 +11,3 @@ export const connectDatabase = () => {
     });
 };
 
-
-// MONGO_URI = "mongodb+srv://new_portfolio_admin:bdxUWYyIR5hneXNs@myportfolio.lk58f.mongodb.net/?retryWrites=true&w=majority&appName=myportfolio"
-
-// MONGO_URI = "mongodb+srv://new_portfolio_admin:bdxUWYyIR5hneXNs@myportfolio.lk58f.mongodb.net/?retryWrites=true&w=majority&appName=myportfolio"
