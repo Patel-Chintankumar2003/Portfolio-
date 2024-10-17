@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Contact.css";
 import { toast } from "react-toastify"; // Import toast
 import "react-toastify/ReactToastify.css"; // Import styles for toast
-import { contactUs } from "../../actions/user";
+import {contactUs} from"../../actions/user.js"
 
 const Contact = () => {
   const [name, setName] = useState("");

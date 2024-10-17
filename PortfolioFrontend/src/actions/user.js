@@ -19,40 +19,37 @@ export const getUser = () => async (dispatch) => {
     });
   }
 };
-
-
-
-
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
       type: "LOGIN_REQUEST",
     });
 
-    const { data } = await axios.post("http://localhost:5000/api/v1/login", {
-      email,
-      password,
-    },{
-      headers: {
-
-        "Content-Type": "application/json",
+    const { data } = await axios.post(
+      "http://localhost:5000/api/v1/login",
+      {
+        email,
+        password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    });
-    
+    );
 
     dispatch({
       type: "LOGIN_SUCCESS",
-      payload: data.message,    //login change to message
+      payload: data.message, //login change to message
     });
   } catch (error) {
-    // if (error.response) {
-      // const errorMessage = error.response.data.message;
-      dispatch({
-        type: "LOGIN_FAILURE",
-        payload: errorMessage,
-      });
-    // }
-
+    if (error.response) {
+    const errorMessage = error.response.data.message
+    dispatch({
+      type: "LOGIN_FAILURE",
+      payload: errorMessage,
+    });
+    }
   }
 };
 
@@ -81,9 +78,10 @@ export const loadUser = () => async (dispatch) => {
     dispatch({
       type: "LOAD_USER_REQUEST",
     });
-
+    axios.defaults.withCredentials = true;
     const { data } = await axios.get("http://localhost:5000/api/v1/me");
-
+    
+    
     dispatch({
       type: "LOAD_USER_SUCCESS",
       payload: data.user,
@@ -91,31 +89,25 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "LOAD_USER_FAILURE",
-      payload:error.response.data.message, 
-              
+      payload: error.response.data.message,
     });
   }
 };
 
-
-export const updateUser =(name, email, password, skills, about) => async (dispatch) => {
+export const updateUser = (name, email, password, skills, about) => async (dispatch) => {
     try {
-      dispatch({
-        type: "UPDATE_USER_REQUEST",
-      });
+      dispatch({ type: "UPDATE_USER_REQUEST" });
 
+      // Log payload to check the data being sent
+      console.log({ name, email, password, skills, about });
+   
       const { data } = await axios.put("http://localhost:5000/api/v1/admin/update",
-        JSON.stringify({
-          name,
-          email,
-          password,
-          skills,
-          about,
-        }),
+        { name, email, password, skills, about },
         {
           headers: {
             "Content-Type": "application/json",
           },
+          withCredentials: true, // Important for cookies or authentication
         }
       );
 
@@ -126,7 +118,7 @@ export const updateUser =(name, email, password, skills, about) => async (dispat
     } catch (error) {
       dispatch({
         type: "UPDATE_USER_FAILURE",
-        payload: error.response.data.message,
+        payload: error.response?.data?.message || "Unknown error",
       });
     }
   };
@@ -168,7 +160,9 @@ export const deleteTimeline = (id) => async (dispatch) => {
       type: "DELETE_TIMELINE_REQUEST",
     });
 
-    const { data } = await axios.delete(`http://localhost:5000/api/v1/admin/timeline/${id}`);
+    const { data } = await axios.delete(
+      `http://localhost:5000/api/v1/admin/timeline/${id}`
+    );
 
     dispatch({
       type: "DELETE_TIMELINE_SUCCESS",
@@ -188,7 +182,7 @@ export const addYoutube = (title, url, image) => async (dispatch) => {
       type: "ADD_YOUTUBE_REQUEST",
     });
 
-    const { data } = await axios.post("http://localhost:5000/api/v1/admin/youtube/add",
+    const { data } = await axios.post("http://localhost:5000/api/v1/admin/youtube/add/",
       { title, url, image },
       {
         headers: {
@@ -215,7 +209,9 @@ export const deleteYoutube = (id) => async (dispatch) => {
       type: "DELETE_YOUTUBE_REQUEST",
     });
 
-    const { data } = await axios.delete(`http://localhost:5000/api/v1/admin/youtube/${id}`);
+    const { data } = await axios.delete(
+      `http://localhost:5000/api/v1/admin/youtube/${id}`
+    );
 
     dispatch({
       type: "DELETE_YOUTUBE_SUCCESS",
@@ -229,32 +225,34 @@ export const deleteYoutube = (id) => async (dispatch) => {
   }
 };
 
-export const addProject = (title, url, image, description, techStack) => async (dispatch) => {
-  try {
-    dispatch({
-      type: "ADD_PROJECT_REQUEST",
-    });
+export const addProject =
+  (title, url, image, description, techStack) => async (dispatch) => {
+    try {
+      dispatch({
+        type: "ADD_PROJECT_REQUEST",
+      });
 
-    const { data } = await axios.post("http://localhost:5000/api/v1/admin/project/add",
-      { title, url, image, description, techStack },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+      const { data } = await axios.post(
+        "http://localhost:5000/api/v1/admin/project/add",
+        { title, url, image, description, techStack },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    dispatch({
-      type: "ADD_PROJECT_SUCCESS",
-      payload: data.message,
-    });
-  } catch (error) {
-    dispatch({
-      type: "ADD_PROJECT_FAILURE",
-      payload: error.response.data.message,
-    });
-  }
-};
+      dispatch({
+        type: "ADD_PROJECT_SUCCESS",
+        payload: data.message,
+      });
+    } catch (error) {
+      dispatch({
+        type: "ADD_PROJECT_FAILURE",
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 export const deleteProject = (id) => async (dispatch) => {
   try {
@@ -262,7 +260,9 @@ export const deleteProject = (id) => async (dispatch) => {
       type: "DELETE_PROJECT_REQUEST",
     });
 
-    const { data } = await axios.delete(`http://localhost:5000/api/v1/admin/project/${id}`);
+    const { data } = await axios.delete(
+      `http://localhost:5000/api/v1/admin/project/${id}`
+    );
 
     dispatch({
       type: "DELETE_PROJECT_SUCCESS",
@@ -282,7 +282,8 @@ export const contactUs = (name, email, message) => async (dispatch) => {
       type: "CONTACT_US_REQUEST",
     });
 
-    const { data } = await axios.post("http://localhost:5000/api/v1/contact",
+    const { data } = await axios.post(
+      "http://localhost:5000/api/v1/contact",
       { name, email, message },
       {
         headers: {

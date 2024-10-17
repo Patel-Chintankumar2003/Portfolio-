@@ -22,7 +22,7 @@
 }
 .projectsWrapper {
   border-top: 100px solid white;
-  border-radius: 300px 300px 0 0;
+  border-radius: 50px 50px 0 0;
   min-height: inherit;
   background-color: white;
   display: flex;

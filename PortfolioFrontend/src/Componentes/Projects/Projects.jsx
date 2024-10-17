@@ -4,8 +4,8 @@ import "./Projects.css";
 import { AiOutlineProject } from "react-icons/ai";
 import { Delete } from "@mui/icons-material";
 import { FaRegSmileWink } from "react-icons/fa";
-// import { deleteProject, getUser } from "../../actions/user";
-// import { useDispatch } from "react-redux";
+import { deleteProject, getUser } from "../../actions/user";
+import { useDispatch } from "react-redux";
 
 export const ProjectCard = ({
   url,
@@ -16,12 +16,12 @@ export const ProjectCard = ({
   isAdmin = false,
   id,
 }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const deleteHandler = async (id) => {
-  //   await dispatch(deleteProject(id));
-  //   dispatch(getUser());
-  // };
+  const deleteHandler = async (id) => {
+    await dispatch(deleteProject(id));
+    dispatch(getUser());
+  };
 
   return (
     <>
@@ -57,7 +57,7 @@ const Projects = ({ projects }) => {
       </Typography>
 
       <div className="projectsWrapper">
-        {/* {projects.map((item) => (
+        {projects.map((item) => (
           <ProjectCard
             id={item._id}
             key={item._id}
@@ -67,7 +67,7 @@ const Projects = ({ projects }) => {
             description={item.description}
             technologies={item.techStack}
           />
-        ))} */}
+        ))}
       </div>
 
       <Typography variant="h3" style={{ font: "100 1.2rem 'Ubuntu Mono'" }}>

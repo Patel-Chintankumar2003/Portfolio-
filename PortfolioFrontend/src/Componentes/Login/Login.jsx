@@ -19,7 +19,7 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password))
+     dispatch(login(email, password))
       .then(() => {
         toast.success("Login successful!"); // Show success toast
       })

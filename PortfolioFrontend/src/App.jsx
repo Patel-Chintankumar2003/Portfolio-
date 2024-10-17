@@ -5,13 +5,13 @@ import { getUser, loadUser } from "./actions/user.js";
 import { ToastContainer } from "react-toastify";  // Toastify imports
 import "react-toastify/ReactToastify.css"; // Toastify styles
 
-import Home from "./Componentes/Home/Home";
+import Home from "./componentes/Home/Home.jsx";
 import Header from "./Componentes/Header/Header";
 import Footer from "./componentes/Footer/Footer";
 import About from "./componentes/About/About";
 import Projects from "./Componentes/Projects/Projects";
 import Contact from "./componentes/Contact/Contact"
-import Login from "./Componentes/Login/Login";
+import Login from "./componentes/Login/Login.jsx";
 import AdminPanel from "./Componentes/Admin/AdminPanel";
 import Timeline from "./Componentes/Admin/TimeLine";
 import Youtube from "./Componentes/Admin/Youtube";

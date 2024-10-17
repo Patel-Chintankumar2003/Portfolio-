@@ -2,7 +2,6 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors";
-
 export const app = express();
 
 // Middleware
@@ -24,10 +23,10 @@ app.use("/api/v1", userRouter);
 
 // Serving frontend (Production build)
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "./frontend/build")));
+app.use(express.static(path.join(__dirname, "./PortfolioFrontend/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./frontend/build/index.html"));
+  res.sendFile(path.resolve(__dirname, "./PortfolioFrontend/build/index.html"));
 });
 
 // Start your server in your main file

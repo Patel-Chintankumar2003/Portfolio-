@@ -132,10 +132,9 @@ const Home = ({ timelines, youtubes, skills }) => {
         </Typography>
 
         <div className="homeCanvasBox">
+          <Typography variant="h2">CHINTAN PATEL</Typography>
           <Typography variant="h2">WEB</Typography>
           <Typography variant="h2">DEVELOPER</Typography>
-          {/* <Typography variant="h2">TEACHER</Typography> */}
-          <Typography variant="h2">CHINTAN PATEL</Typography>
         </div>
 
         <Link to="/projects">VIEW WORK</Link>
@@ -213,26 +212,6 @@ const Home = ({ timelines, youtubes, skills }) => {
               key={item._id}
             />
           ))}
-          {/* <Typography variant="h3">YOUTUBE VIDEOS</Typography>
-
-          <div className="homeYoutubeWrapper">
-            <YoutubeCard 
-            image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-            title="sample one"
-            />
-            <YoutubeCard 
-            image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-            title="sample one"
-            />
-            <YoutubeCard 
-            image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-            title="sample one"
-            />
-            <YoutubeCard 
-            image="https://tse4.mm.bing.net/th?id=OIP.gVbj_ROeM5mX7XYNT0TuigHaFB&pid=Api&P=0&h=220"
-            title="sample one"
-            />
-            */}
         </div>
       </div>
     </div>

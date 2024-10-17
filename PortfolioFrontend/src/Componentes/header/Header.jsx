@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactNavbar } from "overlay-navbar";
-import logo from "../../images/cp logo.png";
+import logo from "../../Images/cp logo transparant.png";
 import { FaUserAlt } from "react-icons/fa";
 
 const Header = () => {
@@ -12,6 +12,7 @@ const Header = () => {
       burgerColorHover="hsl(250, 100%, 75%)"
       logo={logo}
       logoHoverColor="hsl(250, 100%, 75%)"
+      logoWidth="200px" // Adjust the width as desired
       nav2justifyContent="space-around"
       nav3justifyContent="space-around"
       link1Text="Home"
