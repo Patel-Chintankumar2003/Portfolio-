@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./AdminPanel.css";
+import "./Adminpanel.css";
 import { Button, Typography } from "@mui/material";
 import { AiOutlineProject } from "react-icons/ai";
 import { FaYoutube } from "react-icons/fa";
