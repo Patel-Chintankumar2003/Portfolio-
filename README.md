@@ -42,4 +42,4 @@
    npm run dev
    ```
 
-Now your backend and frontend should be running!
+Now your backend and frontend should be running! 
