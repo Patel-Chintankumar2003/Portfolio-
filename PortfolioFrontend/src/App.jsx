@@ -5,18 +5,18 @@ import { getUser, loadUser } from "./actions/user.js";
 import { ToastContainer } from "react-toastify";  // Toastify imports
 import "react-toastify/ReactToastify.css"; // Toastify styles
 
-import Home from "./componentes/Home/Home.jsx";
+import Home from "./Componentes/Home/Home.jsx";
 import Header from "./Componentes/Header/Header";
-import Footer from "./componentes/Footer/Footer";
-import About from "./componentes/About/About";
+import Footer from "./Componentes/Footer/Footer";
+import About from "./Componentes/About/About";
 import Projects from "./Componentes/Projects/Projects";
-import Contact from "./componentes/Contact/Contact"
-import Login from "./componentes/Login/Login.jsx";
+import Contact from "./Componentes/Contact/Contact"
+import Login from "./Componentes/Login/Login.jsx";
 import AdminPanel from "./Componentes/Admin/AdminPanel";
 import Timeline from "./Componentes/Admin/TimeLine";
 import Youtube from "./Componentes/Admin/Youtube";
 import Project from "./Componentes/Admin/Project";
-import Loader from "./componentes/Loader/Loader"
+import Loader from "./Componentes/Loader/Loader"
 
 function App() {
   const dispatch = useDispatch();
