@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";  // Toastify imports
 import "react-toastify/ReactToastify.css"; // Toastify styles
 
 import Home from "./Componentes/Home/Home.jsx";
-import Header from "./Componentes/Header/Header";
+import Header from "./Componentes/header/Header";
 import Footer from "./Componentes/Footer/Footer";
 import About from "./Componentes/About/About";
 import Projects from "./Componentes/Projects/Projects";
