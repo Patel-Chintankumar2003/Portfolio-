@@ -50,11 +50,11 @@ function App() {
               }
             />
             {/* About route with dynamic content */}
-            <Route path="/about" element={<About about={user.about} />} />
+            <Route path="/about" element={<About about={user?.about} />} />
             {/* Projects route */}
             <Route
               path="/projects"
-              element={<Projects projects={user.projects} />}
+              element={<Projects projects={user?.projects} />}
             />
             {/* Contact page */}
             <Route path="/contact" element={<Contact />} />
