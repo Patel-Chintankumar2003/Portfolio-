@@ -13,7 +13,7 @@ import Projects from "./Componentes/Projects/Projects";
 import Contact from "./Componentes/Contact/Contact"
 import Login from "./Componentes/Login/Login.jsx";
 import AdminPanel from "./Componentes/Admin/AdminPanel";
-import Timeline from "./Componentes/Admin/TimeLine";
+import Timeline from "./Componentes/Admin/Timeline";
 import Youtube from "./Componentes/Admin/Youtube";
 import Project from "./Componentes/Admin/Project";
 import Loader from "./Componentes/Loader/Loader"
