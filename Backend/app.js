@@ -33,3 +33,4 @@ app.get("*", (req, res) => {
 });
 
 // Start your server in your main file
+export default app;
